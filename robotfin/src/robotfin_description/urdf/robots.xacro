@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot   name="robotfin" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find robotfin)/src/robotfin_description/urdf/robots.gazebo.xacro" /> 
+ <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="2.7808E-17 0.030757 -0.14283"
+        rpy="0 0 0" />
+      <mass
+        value="6.851" />
+      <inertia
+        ixx="0.13782"
+        ixy="-9.7947E-18"
+        ixz="-3.7627E-17"
+        iyy="0.18627"
+        iyz="-0.010532"
+        izz="0.06655" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robotfin/src/robotfin_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0.87843 0.16471 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robotfin/src/robotfin_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Lidar_Link">
+    <inertial>
+      <origin
+        xyz="-2.0279E-17 6.3357E-17 0.034217"
+        rpy="0 0 0" />
+      <mass
+        value="0.49143" />
+      <inertia
+        ixx="0.00049933"
+        ixy="-5.421E-20"
+        ixz="4.3436E-22"
+        iyy="0.00049933"
+        iyz="-1.8845E-20"
+        izz="0.00051729" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robotfin/src/robotfin_description/meshes/Lidar_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robotfin/src/robotfin_description/meshes/Lidar_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_link"
+    type="fixed">
+    <origin
+      xyz="0 0 0.2"
+      rpy="0 0 0.90255" />
+    <parent
+      link="base_link" />
+    <child
+      link="Lidar_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Small_Link">
+    <inertial>
+      <origin
+        xyz="2.6116E-05 4.3526E-05 0.0027613"
+        rpy="0 0 0" />
+      <mass
+        value="0.16218" />
+      <inertia
+        ixx="0.00016614"
+        ixy="-1.8385E-07"
+        ixz="1.6735E-07"
+        iyy="0.00016769"
+        iyz="2.7891E-07"
+        izz="0.00021729" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robotfin/src/robotfin_description/meshes/Small_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.38431 0.46275 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robotfin/src/robotfin_description/meshes/Small_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="small_link"
+    type="fixed">
+    <origin
+      xyz="0 0.345 -0.0735"
+      rpy="3.1416 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Small_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Right_Wheel_Link">
+    <inertial>
+      <origin
+        xyz="-0.083443 -2.8144E-18 2.6753E-18"
+        rpy="0 0 0" />
+      <mass
+        value="2.2321" />
+      <inertia
+        ixx="0.015051"
+        ixy="1.4074E-18"
+        ixz="-4.0181E-19"
+        iyy="0.0080121"
+        iyz="5.421E-19"
+        izz="0.0080121" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robotfin/src/robotfin_description/meshes/Right_Wheel_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robotfin/src/robotfin_description/meshes/Right_Wheel_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_link"
+    type="continuous">
+    <origin
+      xyz="0.1395 0 0"
+      rpy="2.9765 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="Right_Wheel_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Left_Wheel_Link">
+    <inertial>
+      <origin
+        xyz="-0.083443 6.0144E-17 -1.6209E-17"
+        rpy="0 0 0" />
+      <mass
+        value="2.2321" />
+      <inertia
+        ixx="0.015051"
+        ixy="-7.1487E-19"
+        ixz="8.2622E-19"
+        iyy="0.0080121"
+        iyz="-1.0842E-18"
+        izz="0.0080121" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robotfin/src/robotfin_description/meshes/Left_Wheel_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robotfin/src/robotfin_description/meshes/Left_Wheel_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_link"
+    type="continuous">
+    <origin
+      xyz="-0.1395 0 0"
+      rpy="-2.1829 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Left_Wheel_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_link">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_link">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>

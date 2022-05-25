@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find robotfin)/src/robotfin_2dnav/launch/robotfin_move_base.launch"/>  
+      
+</launch>
